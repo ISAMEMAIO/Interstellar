@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const html = `
       <div id="icon-container">
-        <div class="icon"><a href="https://github.com/UseInterstellar/Interstellar"><img alt="nav" id="INImg" src="${LogoUrl}"/></a></div>
+        <div class="icon"><a href="about://blank"><img alt="nav" id="INImg" src="${LogoUrl}"/></a></div>
       </div>
       <div class="f-nav-right">
         <a class="navbar-link" href="/./a"><i class="fa-solid fa-gamepad navbar-icon"></i><an>&#71;&#97;</an><an>&#109;&#101;&#115;</an></a>
