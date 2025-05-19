@@ -187,8 +187,8 @@ const SplashT = [
   "Check out our Patreon (https://www.patreon.com/gointerstellar)",
 ];
 
-let SplashI = Math.floor(Math.random() * SplashT.length);
 const SplashE = document.getElementById("splash");
+SplashE.innerText = "if Google doesn't work just go to settings and switch the search engine"; //
 
 function US() {
   SplashI = (SplashI + 1) % SplashT.length;
