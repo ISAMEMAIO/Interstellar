@@ -188,7 +188,7 @@ const SplashT = [
 ];
 
 const SplashE = document.getElementById("splash");
-SplashE.innerText = "if Google doesn't work just go to settings and switch the search engine"; //
+SplashE.innerText = "note: if Google doesn't work just go to settings and switch the search engine"; //
 
 function US() {
   SplashI = (SplashI + 1) % SplashT.length;
