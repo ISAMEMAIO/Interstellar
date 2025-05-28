@@ -223,7 +223,7 @@ function reload() {
 function popout() {
   const activeIframe = document.querySelector("#frame-container iframe.active");
   if (activeIframe) {
-    const newWindow = window.open("about:blank", "_blank");
+    window.location.href = activeIframe.src;
     if (newWindow) {
       const name = localStorage.getItem("name") || "My Drive - Google Drive";
       const icon =
