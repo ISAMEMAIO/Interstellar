@@ -9,11 +9,16 @@ body {
 }
 
 .settings-container {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   gap: 20px;
-   padding: 20% 20px 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.settings-card {
+  flex: 0 1 400px;
+  margin-bottom: 32px;
 }
 
 .settings-title {
