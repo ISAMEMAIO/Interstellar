@@ -90,13 +90,10 @@ input {
 }
 
 #splash {
-    color: #FF0000;
-    margin-bottom: 1em;
-    margin-top: -2em;
-    padding: 0.5em 1em;           /* Add some padding for better appearance */
-    font-family: "Poppins", sans-serif;
-    border: 2px solid #FFFF00;      /* Add this line for a black border */
-    border-radius: 4px;           /* Optional: rounded corners */
-    display: inline-block;        /* Keeps border tight around text */
-    background: #FFFF00;             /* Optional: white background for contrast */
+  box-shadow: 0 0 16px 6px yellow;
+  background: transparent;
+  color: #FF0000;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 8px;
 }
