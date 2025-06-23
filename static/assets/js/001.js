@@ -37,11 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (themeId === "Inverted") {
       LogoUrl = "/assets/media/favicon/.jpg";
     }
-    const html = `
-      <div id="icon-container">
-        <div class="icon"><a href="about://blank"><img alt="nav" id="INImg" src="${LogoUrl}"/></a></div>
-      </div>
-      <div class="f-nav-right">
+const html = `
+  <div id="icon-container">
+    <div class="icon">
+      <a href="about://blank"><img alt="nav" id="INImg" src="${LogoUrl}"/></a>
+      <div class="logo-float">Welcome to Interstellar!</div>
+    </div>
+  </div>
+  <div class="f-nav-right">
         <a class="navbar-link" href="/./a"><i class="fa-solid fa-gamepad navbar-icon"></i><an>&#71;&#97;</an><an>&#109;&#101;&#115;</an></a>
         <a class="navbar-link" href="/./b"><i class="fa-solid fa-phone navbar-icon"></i><an>&#65;&#112;</an><an>&#112;&#115;</an></a>
         ${qp ? "" : '<a class="navbar-link" href="/./d"><i class="fa-solid fa-laptop navbar-icon"></i><an>&#84;&#97;</an><an>&#98;&#115;</an></a>'}
