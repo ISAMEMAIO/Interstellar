@@ -41,7 +41,7 @@ const html = `
   <div id="icon-container">
     <div class="icon">
       <a href="about://blank"><img alt="nav" id="INImg" src="${LogoUrl}"/></a>
-      <div class="logo-float">!</div>
+      <div class="logo-float"></div>
     </div>
   </div>
   <div class="f-nav-right">
