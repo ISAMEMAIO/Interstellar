@@ -90,10 +90,7 @@ input {
 }
 
 #splash {
-  box-shadow: 0 0 0px 0px yellow;
-  background: transparent;
-  color: #FF0000;
-  border: none;
-  border-radius: 4px;
-  padding: 2px 8px;
-}
+   color: #FF0000;
+   margin-bottom: 1em;
+   margin-top: -2em;Add commentMore actions
+   padding: 0;
