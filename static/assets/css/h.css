@@ -95,8 +95,8 @@ input {
     margin-top: -2em;
     padding: 0.5em 1em;           /* Add some padding for better appearance */
     font-family: "Poppins", sans-serif;
-    border: 2px solid black;      /* Add this line for a black border */
+    border: 2px solid #FFFF00;      /* Add this line for a black border */
     border-radius: 4px;           /* Optional: rounded corners */
     display: inline-block;        /* Keeps border tight around text */
-    background: #fff;             /* Optional: white background for contrast */
+    background: #FFFF00;             /* Optional: white background for contrast */
 }
