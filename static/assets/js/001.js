@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (nav) {
     const themeId = localStorage.getItem("theme");
-    let LogoUrl = "/assets/media/favicon/Atom2.png";
+    let LogoUrl = "/assets/media/favicon/.png";
     if (themeId === "Inverted") {
       LogoUrl = "/assets/media/favicon/.jpg";
     }
