@@ -90,7 +90,7 @@ input {
 }
 
 #splash {
-  box-shadow: 0 0 16px 6px yellow;
+  box-shadow: 0 0 0px 0px yellow;
   background: transparent;
   color: #FF0000;
   border: none;
