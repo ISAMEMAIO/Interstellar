@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeId = localStorage.getItem("theme");
     let LogoUrl = "/assets/media/favicon/.png";
     if (themeId === "Inverted") {
-      LogoUrl = "/assets/media/favicon/atom2.png";
+      LogoUrl = "/assets/media/favicon/quantum-future-things-icon-illustration-vector.jpg";
     }
     const html = `
       <div id="icon-container">
