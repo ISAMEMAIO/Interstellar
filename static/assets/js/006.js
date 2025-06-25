@@ -337,8 +337,9 @@ function SaveEngine() {
   if (customEngine.trim() !== "") {
     localStorage.setItem("engine", customEngine);
     localStorage.setItem("enginename", "Custom");
-  } else {
-    alert("Please enter a custom search engine value.");
+  }
+  // Do nothing if empty
+}
   }
 }
 
