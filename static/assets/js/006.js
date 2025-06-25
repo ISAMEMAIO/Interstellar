@@ -340,8 +340,6 @@ function SaveEngine() {
   }
   // Do nothing if empty
 }
-  }
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   const selectedEngineName = localStorage.getItem("enginename");
