@@ -1,321 +1,72 @@
-// Ads
-// settings.js
+// Settings.js - Cleaned for Interstellar
+
 document.addEventListener("DOMContentLoaded", () => {
-  function adChange(selectedValue) {
-    if (selectedValue === "default") {
-      localStorage.setItem("ads", "on");
-    } else if (selectedValue === "popups") {
-      localStorage.setItem("ads", "popups");
-    } else if (selectedValue === "off") {
-      localStorage.setItem("ads", "off");
+  // Lite Version Toggle
+  const liteToggle = document.getElementById("lite-toggle");
+  if (liteToggle) {
+    // Load state
+    if (localStorage.getItem("lite") === "true") {
+      liteToggle.checked = true;
     }
-  }
-
-  const adTypeElement = document.getElementById("adType");
-
-  if (adTypeElement) {
-    adTypeElement.addEventListener("change", function () {
-      const selectedOption = this.value;
-      adChange(selectedOption);
+    liteToggle.addEventListener("change", () => {
+      localStorage.setItem("lite", liteToggle.checked ? "true" : "false");
+      // Optional: reload or redirect for lite mode changes
     });
-
-    const storedAd = localStorage.getItem("ads");
-    if (storedAd === "on") {
-      adTypeElement.value = "default";
-    } else if (storedAd === "popups") {
-      adTypeElement.value = "popups";
-    } else if (storedAd === "off") {
-      adTypeElement.value = "off";
-    } else {
-      adTypeElement.value = "default";
-    }
-  }
-  // Makes the custom icon and name persistent
-  const iconElement = document.getElementById("icon");
-  const nameElement = document.getElementById("name");
-  const customIcon = localStorage.getItem("CustomIcon");
-  const customName = localStorage.getItem("CustomName");
-  iconElement.value = customIcon;
-  nameElement.value = customName;
-
-  if (localStorage.getItem("ab") === "true") {
-    document.getElementById("ab-settings-switch").checked = true;
-  }
-});
-
-// Dyn
-document.addEventListener("DOMContentLoaded", () => {
-  function pChange(selectedValue) {
-    if (selectedValue === "uv") {
-      localStorage.setItem("uv", "true");
-      localStorage.setItem("dy", "false");
-    } else if (selectedValue === "dy") {
-      localStorage.setItem("uv", "false");
-      localStorage.setItem("dy", "true");
-    }
   }
 
-  const pChangeElement = document.getElementById("pChange");
-
-  if (pChangeElement) {
-    pChangeElement.addEventListener("change", function () {
-      const selectedOption = this.value;
-      pChange(selectedOption);
-    });
-
-    const storedP = localStorage.getItem("uv");
-    if (storedP === "true") {
-      pChangeElement.value = "uv";
-    } else if (
-      localStorage.getItem("dy") === "true" ||
-      localStorage.getItem("dy") === "auto"
-    ) {
-      pChangeElement.value = "dy";
-    } else {
-      pChangeElement.value = "uv";
-    }
-  }
-});
-
-// Key
-let eventKey = localStorage.getItem("eventKey") || "`";
-let eventKeyRaw = localStorage.getItem("eventKeyRaw") || "`";
-let pLink = localStorage.getItem("pLink") || "https://classroom.google.com/";
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("eventKeyInput").value = eventKeyRaw;
-  document.getElementById("linkInput").value = pLink;
-
-  const selectedOption = localStorage.getItem("selectedOption");
-  if (selectedOption) {
-    updateHeadSection(selectedOption);
-  }
-});
-
-const eventKeyInput = document.getElementById("eventKeyInput");
-eventKeyInput.addEventListener("input", () => {
-  eventKey = eventKeyInput.value.split(",");
-});
-
-const linkInput = document.getElementById("linkInput");
-linkInput.addEventListener("input", () => {
-  pLink = linkInput.value;
-});
-
-function saveEventKey() {
-  eventKey = eventKeyInput.value.split(",");
-  eventKeyRaw = eventKeyInput.value;
-  localStorage.setItem("eventKey", JSON.stringify(eventKey));
-  localStorage.setItem("pLink", pLink);
-  localStorage.setItem("eventKeyRaw", eventKeyRaw);
-  // biome-ignore lint/correctness/noSelfAssign:
-  window.location = window.location;
-}
-const dropdown = document.getElementById("dropdown");
-const options = dropdown.getElementsByTagName("option");
-
-const sortedOptions = Array.from(options).sort((a, b) =>
-  a.textContent.localeCompare(b.textContent),
-);
-
-while (dropdown.firstChild) {
-  dropdown.removeChild(dropdown.firstChild);
-}
-
-for (const option of sortedOptions) {
-  dropdown.appendChild(option);
-}
-
-function saveIcon() {
-  const iconElement = document.getElementById("icon");
-  const iconValue = iconElement.value;
-  console.log("saveIcon function called with icon value:", iconValue);
-  localStorage.setItem("icon", iconValue);
-}
-
-function saveName() {
-  const nameElement = document.getElementById("name");
-  const nameValue = nameElement.value;
-  console.log("saveName function called with name value:", nameValue);
-  localStorage.setItem("name", nameValue);
-}
-
-function CustomIcon() {
-  const iconElement = document.getElementById("icon");
-  const iconValue = iconElement.value;
-  console.log("saveIcon function called with icon value:", iconValue);
-  localStorage.setItem("CustomIcon", iconValue);
-}
-
-function CustomName() {
-  const nameElement = document.getElementById("name");
-  const nameValue = nameElement.value;
-  console.log("saveName function called with name value:", nameValue);
-  localStorage.setItem("CustomName", nameValue);
-}
-function ResetCustomCloak() {
-  localStorage.removeItem("CustomName");
-  localStorage.removeItem("CustomIcon");
-  document.getElementById("icon").value = "";
-  document.getElementById("name").value = "";
-}
-
-function redirectToMainDomain() {
-  const currentUrl = window.location.href;
-  const mainDomainUrl = currentUrl.replace(/\/[^\/]*$/, "");
-  const target = mainDomainUrl + window.location.pathname;
-  if (window !== top) {
-    try {
-      top.location.href = target;
-    } catch {
-      try {
-        parent.location.href = target;
-      } catch {
-        window.location.href = target;
-      }
-    }
-  } else window.location.href = mainDomainUrl + window.location.pathname;
-}
-
-document.addEventListener("DOMContentLoaded", event => {
-  const icon = document.getElementById("tab-favicon");
-  const name = document.getElementById("t");
-  const selectedValue = localStorage.getItem("selectedOption") || "Default";
-  document.getElementById("dropdown").value = selectedValue;
-  updateHeadSection(selectedValue);
-});
-
-function handleDropdownChange(selectElement) {
-  const selectedValue = selectElement.value;
-  localStorage.removeItem("CustomName");
-  localStorage.removeItem("CustomIcon");
-  localStorage.setItem("selectedOption", selectedValue);
-  updateHeadSection(selectedValue);
-  redirectToMainDomain(selectedValue);
-}
-
-function updateHeadSection(selectedValue) {
-  const icon = document.getElementById("tab-favicon");
-  const name = document.getElementById("t");
-  const customName = localStorage.getItem("CustomName");
-  const customIcon = localStorage.getItem("CustomIcon");
-
-  if (customName && customIcon) {
-    name.textContent = customName;
-    icon.setAttribute("href", customIcon);
-    localStorage.setItem("name", customName);
-    localStorage.setItem("icon", customIcon);
-  }
-}
-// Custom Background
-document.addEventListener("DOMContentLoaded", () => {
+  // Background Image
   const saveButton = document.getElementById("save-button");
   const backgroundInput = document.getElementById("background-input");
   const resetButton = document.getElementById("reset-button");
+  if (saveButton && backgroundInput && resetButton) {
+    saveButton.addEventListener("click", () => {
+      const imageURL = backgroundInput.value;
+      if (imageURL.trim() !== "") {
+        localStorage.setItem("backgroundImage", imageURL);
+        document.body.style.backgroundImage = `url('${imageURL}')`;
+        backgroundInput.value = "";
+      }
+    });
+    resetButton.addEventListener("click", () => {
+      localStorage.removeItem("backgroundImage");
+      document.body.style.backgroundImage = "url('default-background.jpg')";
+      window.location.reload();
+    });
 
-  saveButton.addEventListener("click", () => {
-    const imageURL = backgroundInput.value;
-    if (imageURL.trim() !== "") {
-      localStorage.setItem("backgroundImage", imageURL);
-      document.body.style.backgroundImage = `url('${imageURL}')`;
-      backgroundInput.value = "";
-    } else {
-      console.log("No image URL entered.");
-    }
-  });
-
-  resetButton.addEventListener("click", () => {
-    localStorage.removeItem("backgroundImage");
-    document.body.style.backgroundImage = "url('default-background.jpg')";
-    window.location.reload();
-  });
-});
-
-// Particles
-const switches = document.getElementById("2");
-
-if (window.localStorage.getItem("particles") !== "") {
-  if (window.localStorage.getItem("particles") === "true") {
-    switches.checked = true;
-  } else {
-    switches.checked = false;
-  }
-}
-
-switches.addEventListener("change", event => {
-  if (event.currentTarget.checked) {
-    window.localStorage.setItem("particles", "true");
-  } else {
-    window.localStorage.setItem("particles", "false");
-  }
-});
-// AB Cloak
-function AB() {
-  let inFrame;
-
-  try {
-    inFrame = window !== top;
-  } catch (e) {
-    inFrame = true;
-  }
-
-  if (!inFrame && !navigator.userAgent.includes("Firefox")) {
-    const popup = open("about:blank", "_blank");
-    if (!popup || popup.closed) {
-      alert("Window blocked. Please allow popups for this site.");
-    } else {
-      const doc = popup.document;
-      const iframe = doc.createElement("iframe");
-      const style = iframe.style;
-      const link = doc.createElement("link");
-
-      const name = localStorage.getItem("name") || "My Drive - Google Drive";
-      const icon =
-        localStorage.getItem("icon") ||
-        "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png";
-
-      doc.title = name;
-      link.rel = "icon";
-      link.href = icon;
-
-      iframe.src = location.href;
-      style.position = "fixed";
-      style.top = style.bottom = style.left = style.right = 0;
-      style.border = style.outline = "none";
-      style.width = style.height = "100%";
-
-      const pLink = localStorage.getItem(encodeURI("pLink")) || getRandomURL();
-      location.replace(pLink);
-
-      const script = doc.createElement("script");
-      script.textContent = `
-        window.onbeforeunload = function (event) {
-          const confirmationMessage = 'Leave Site?';
-          (event || window.event).returnValue = confirmationMessage;
-          return confirmationMessage;
-        };
-      `;
-      doc.head.appendChild(link);
-      doc.body.appendChild(iframe);
-      doc.head.appendChild(script);
+    // Apply saved background on load
+    const savedBg = localStorage.getItem("backgroundImage");
+    if (savedBg) {
+      document.body.style.backgroundImage = `url('${savedBg}')`;
     }
   }
-}
 
-function toggleAB() {
-  ab = localStorage.getItem("ab");
-  if (!ab) {
-    localStorage.setItem("ab", "true");
-  } else if (ab === "true") {
-    localStorage.setItem("ab", "false");
-  } else {
-    localStorage.setItem("ab", "true");
+  // Search Engine Dropdown
+  const engineDropdown = document.getElementById("engine");
+  if (engineDropdown) {
+    const selectedEngineName = localStorage.getItem("enginename");
+    if (selectedEngineName) {
+      engineDropdown.value = selectedEngineName;
+    }
   }
-}
-// Search Engine
+
+  // Theme Dropdown
+  const themeDropdown = document.getElementById("dropdown");
+  if (themeDropdown) {
+    const selectedValue = localStorage.getItem("selectedOption") || "d";
+    themeDropdown.value = selectedValue;
+
+    themeDropdown.addEventListener("change", () => {
+      const selected = themeDropdown.value;
+      localStorage.setItem("selectedOption", selected);
+      // Optionally: applyTheme(selected);
+      // location.reload(); // if needed
+    });
+  }
+});
+
+// Search Engine Change
 function EngineChange(dropdown) {
   const selectedEngine = dropdown.value;
-
   const engineUrls = {
     Google: "https://www.google.com/search?q=",
     Bing: "https://www.bing.com/search?q=",
@@ -325,55 +76,23 @@ function EngineChange(dropdown) {
     SearchEncrypt: "https://www.searchencrypt.com/search/?q=",
     Ecosia: "https://www.ecosia.org/search?q=",
   };
-
   localStorage.setItem("engine", engineUrls[selectedEngine]);
   localStorage.setItem("enginename", selectedEngine);
-
   dropdown.value = selectedEngine;
 }
 
+// Save Custom Engine
 function SaveEngine() {
   const customEngine = document.getElementById("engine-form").value;
   if (customEngine.trim() !== "") {
     localStorage.setItem("engine", customEngine);
     localStorage.setItem("enginename", "Custom");
   }
-  // Do nothing if empty
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const selectedEngineName = localStorage.getItem("enginename");
-  const dropdown = document.getElementById("engine");
-  if (selectedEngineName) {
-    dropdown.value = selectedEngineName;
-  }
-});
-
-function getRandomURL() {
-  const randomURLS = [
-    "https://kahoot.it",
-    "https://classroom.google.com",
-    "https://drive.google.com",
-    "https://google.com",
-    "https://docs.google.com",
-    "https://slides.google.com",
-    "https://www.nasa.gov",
-    "https://blooket.com",
-    "https://clever.com",
-    "https://edpuzzle.com",
-    "https://khanacademy.org",
-    "https://wikipedia.org",
-    "https://dictionary.com",
-  ];
-  return randomURLS[randRange(0, randomURLS.length)];
-}
-
-function randRange(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
-
+// Export/Import Save Data
 function exportSaveData() {
-  function getCookies() {
+  const getCookies = () => {
     const cookies = document.cookie.split("; ");
     const cookieObj = {};
     cookies.forEach(cookie => {
@@ -381,8 +100,8 @@ function exportSaveData() {
       cookieObj[name] = value;
     });
     return cookieObj;
-  }
-  function getLocalStorage() {
+  };
+  const getLocalStorage = () => {
     const localStorageObj = {};
     for (const key in localStorage) {
       if (localStorage.hasOwnProperty(key)) {
@@ -390,7 +109,7 @@ function exportSaveData() {
       }
     }
     return localStorageObj;
-  }
+  };
   const data = {
     cookies: getCookies(),
     localStorage: getLocalStorage(),
@@ -429,9 +148,7 @@ function importSaveData() {
           });
         }
         alert("Your save data has been imported. Please test it out.");
-        alert(
-          "If you find any issues then report it in GitHub or the Interstellar Discord.",
-        );
+        alert("If you find any issues then report it in GitHub or the Interstellar Discord.");
       } catch (error) {
         console.error("Error parsing JSON file:", error);
       }
@@ -440,27 +157,3 @@ function importSaveData() {
   };
   input.click();
 }
-
-// Lite Version Toggle Redirect Logic
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Attempt to find the Lite Version toggle by its ID
-  const liteToggle = document.getElementById("lite-toggle");
-
-  if (!liteToggle) {
-    console.error("Error: Lite Version toggle (#lite-toggle) not found in the DOM.");
-    return;
-  }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const liteToggle = document.getElementById("lite-toggle");
-  if (!liteToggle) {
-    console.error("Lite Version toggle not found.");
-    return;
-  }
-  liteToggle.addEventListener("change", () => {
-    if (liteToggle.checked) {
-      window.location.href = "https://google.com/";
-    }
-  });
-});
