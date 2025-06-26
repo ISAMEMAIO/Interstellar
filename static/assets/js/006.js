@@ -452,15 +452,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Add a change event listener to the toggle
+document.addEventListener("DOMContentLoaded", () => {
+  const liteToggle = document.getElementById("lite-toggle");
+  if (!liteToggle) {
+    console.error("Lite Version toggle not found.");
+    return;
+  }
   liteToggle.addEventListener("change", () => {
-    console.log("Lite toggle changed. Checked state:", liteToggle.checked);
     if (liteToggle.checked) {
-      // Redirect to Google when toggled on
       window.location.href = "https://google.com/";
     }
   });
-
-  // Optional: Debug info for initial state
-  console.log("Lite Version toggle script loaded. Initial checked state:", liteToggle.checked);
 });
