@@ -440,3 +440,13 @@ function importSaveData() {
   };
   input.click();
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const liteToggle = document.getElementById("lite-toggle");
+  if (!liteToggle) return;
+  liteToggle.addEventListener("change", () => {
+    if (liteToggle.checked) {
+      window.location.href = "https://your-lite-version-link.com"; // <-- change to your desired link
+    }
+  });
+});
