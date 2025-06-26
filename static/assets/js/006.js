@@ -443,10 +443,15 @@ function importSaveData() {
 
 document.addEventListener("DOMContentLoaded", () => {
   const liteToggle = document.getElementById("lite-toggle");
-  if (!liteToggle) return;
+  if (!liteToggle) {
+    console.error("Lite Version toggle not found in DOM.");
+    return;
+  }
   liteToggle.addEventListener("change", () => {
+    console.log("Lite toggle changed. Checked state:", liteToggle.checked);
     if (liteToggle.checked) {
-      window.location.href = "https://google.com/"; // <-- change to your desired link
+      // Redirect to Google
+      window.location.href = "https://google.com/";
     }
   });
 });
