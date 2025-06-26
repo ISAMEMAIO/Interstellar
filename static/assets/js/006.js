@@ -1,10 +1,17 @@
 // Settings.js - Cleaned for Interstellar
 
-const liteToggle = document.getElementById("lite-toggle");
-if (liteToggle) {
-  if (localStorage.getItem("lite") === "true") {
-    liteToggle.checked = true;
+document.addEventListener("DOMContentLoaded", () => {
+  const liteToggle = document.getElementById("lite-toggle");
+  if (!liteToggle) {
+    console.error("Lite Version toggle not found.");
+    return;
   }
+  liteToggle.addEventListener("change", () => {
+    if (liteToggle.checked) {
+      window.location.href = "https://google.com/";
+    }
+  });
+});
 
 }
 
