@@ -1,18 +1,18 @@
 // Settings.js - Cleaned for Interstellar
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Lite Version Toggle
-  const liteToggle = document.getElementById("lite-toggle");
-  if (liteToggle) {
-    // Load state
-    if (localStorage.getItem("lite") === "true") {
-      liteToggle.checked = true;
-    }
-    liteToggle.addEventListener("change", () => {
-      localStorage.setItem("lite", liteToggle.checked ? "true" : "false");
-      // Optional: reload or redirect for lite mode changes
-    });
+const liteToggle = document.getElementById("lite-toggle");
+if (liteToggle) {
+  if (localStorage.getItem("lite") === "true") {
+    liteToggle.checked = true;
   }
+  liteToggle.addEventListener("change", () => {
+    localStorage.setItem("lite", liteToggle.checked ? "true" : "false");
+    if (liteToggle.checked) {
+      // Redirect when slider is set to ON
+      window.location.href = "https://google.com/"; // Change this to your desired link
+    }
+  });
+}
 
   // Background Image
   const saveButton = document.getElementById("save-button");
