@@ -237,3 +237,21 @@ select {
 #warning {
    color: red;
 }
+
+.lite-version-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #e0e0e0, #c0c0c0);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  padding: 18px 28px;
+  width: 320px;
+  margin: 32px auto;
+}
+
+.lite-label {
+  font-weight: bold;
+  font-size: 20px;
+  color: #222;
+}
