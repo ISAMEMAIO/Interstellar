@@ -1,19 +1,17 @@
 // Settings.js - Cleaned for Interstellar
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Lite Version Toggle
   const liteToggle = document.getElementById("lite-toggle");
   if (!liteToggle) {
     console.error("Lite Version toggle not found.");
-    return;
+  } else {
+    liteToggle.addEventListener("change", () => {
+      if (liteToggle.checked) {
+        window.location.href = "https://google.com/";
+      }
+    });
   }
-  liteToggle.addEventListener("change", () => {
-    if (liteToggle.checked) {
-      window.location.href = "https://google.com/";
-    }
-  });
-});
-
-}
 
   // Background Image
   const saveButton = document.getElementById("save-button");
@@ -105,7 +103,7 @@ function exportSaveData() {
   const getLocalStorage = () => {
     const localStorageObj = {};
     for (const key in localStorage) {
-      if (localStorage.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(localStorage, key)) {
         localStorageObj[key] = localStorage.getItem(key);
       }
     }
