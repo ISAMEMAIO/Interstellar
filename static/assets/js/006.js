@@ -5,13 +5,7 @@ if (liteToggle) {
   if (localStorage.getItem("lite") === "true") {
     liteToggle.checked = true;
   }
-  liteToggle.addEventListener("change", () => {
-    localStorage.setItem("lite", liteToggle.checked ? "true" : "false");
-    if (liteToggle.checked) {
-      // Redirect when slider is set to ON
-      window.location.href = "https://google.com/"; // Change this to your desired link
-    }
-  });
+
 }
 
   // Background Image
