@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!liteToggle) return;
   liteToggle.addEventListener("change", () => {
     if (liteToggle.checked) {
-      window.location.href = "https://google.com"; // <-- change to your desired link
+      window.location.href = "https://google.com/"; // <-- change to your desired link
     }
   });
 });
