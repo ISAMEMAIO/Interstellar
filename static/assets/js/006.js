@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     liteToggle.addEventListener("change", () => {
       if (liteToggle.checked) {
-        window.location.href = "https://google.com/";
+        window.location.href = "https://interstellar-v5-ruddy.vercel.app/";
       }
     });
   }
